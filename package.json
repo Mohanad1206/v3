@@ -1,0 +1,25 @@
+{
+  "name": "dynamic-scraper-playwright",
+  "version": "1.1.0",
+  "type": "module",
+  "description": "Headless Playwright scraper for dynamic e-commerce pages with JSON-LD fallback and per-domain selectors. Outputs NDJSON.",
+  "scripts": {
+    "start": "node src/scrape.js",
+    "scrape": "node src/scrape.js",
+    "test:run": "node src/scrape.js --in examples/urls.txt --out out/sample.ndjson --max 10 --timeout 30000",
+    "postinstall": "npx playwright install --with-deps chromium",
+    "scrape:webhook": "node src/scrape.js --in examples/urls.txt --webhook $MAKE_WEBHOOK_URL --webhook-mode line --out out/results.ndjson --max 25"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "p-limit": "^6.1.0",
+    "playwright": "^1.47.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-user/dynamic-scraper-playwright.git"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "default": {
+    "product_list": [
+      "a.product-item-link",
+      "div.product-item-info a.product-item-link",
+      "div.product-card a[href]",
+      "li.product a[href]",
+      "div.card a[href*='/product']",
+      "div.product-miniature a[href]"
+    ],
+    "name": [
+      ".product-name",
+      "h1.product-name",
+      "h1.product-title",
+      ".page-title",
+      "meta[property='og:title']::attr(content)"
+    ],
+    "price": [
+      ".price .amount",
+      ".price .price",
+      ".price-wrapper .price",
+      "meta[itemprop='price']::attr(content)",
+      "meta[property='product:price:amount']::attr(content)"
+    ],
+    "availability": [
+      ".stock-status",
+      ".availability span",
+      ".product-stock",
+      "link[itemprop='availability']::attr(href)"
+    ]
+  },
+  "2b.com.eg": {
+    "product_list": [
+      "a.product-item-link"
+    ],
+    "name": [
+      ".base",
+      "h1.page-title span"
+    ],
+    "price": [
+      ".price .price"
+    ],
+    "availability": [
+      ".stock.available span"
+    ]
+  }
+}

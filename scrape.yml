@@ -1,0 +1,45 @@
+name: Scrape Dynamic Sites
+
+on:
+  workflow_dispatch:
+    inputs:
+      max:
+        description: 'Max products per site'
+        required: false
+        default: '50'
+      mode:
+        description: 'Webhook mode: none | line | batch'
+        required: false
+        default: 'line'
+  schedule:
+    - cron: '25 3 * * *'  # daily 03:25 UTC
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: |
+          npm i
+          npx playwright install --with-deps chromium
+
+      - name: Run scraper
+        env:
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+          WEBHOOK_HEADERS: ${{ secrets.WEBHOOK_HEADERS }}
+        run: |
+          node src/scrape.js             --in examples/urls.txt             --out out/results.ndjson             --max ${{ github.event.inputs.max || '50' }}             --webhook "${{ secrets.MAKE_WEBHOOK_URL }}"             --webhook-mode ${{ github.event.inputs.mode || 'line' }}             --webhook-headers "${{ secrets.WEBHOOK_HEADERS || '{}' }}"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: results.ndjson
+          path: out/results.ndjson

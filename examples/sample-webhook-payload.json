@@ -1,0 +1,13 @@
+{
+  "timestamp_iso": "2025-09-28T10:11:12.345Z",
+  "site_name": "2b.com.eg",
+  "product_name": "Sample Gaming Headset",
+  "sku": null,
+  "product_url": "https://2b.com.eg/p/sample-gaming-headset.html",
+  "status": "Available",
+  "price_value": 1299,
+  "currency": "EGP",
+  "raw_price_text": "EGP 1,299",
+  "source_url": "https://2b.com.eg/en/gaming/gaming-acc.html",
+  "notes": "selectors"
+}

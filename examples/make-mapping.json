@@ -1,0 +1,31 @@
+{
+  "fields_order": [
+    "timestamp_iso",
+    "site_name",
+    "product_name",
+    "sku",
+    "product_url",
+    "status",
+    "price_value",
+    "currency",
+    "raw_price_text",
+    "source_url",
+    "notes"
+  ],
+  "types": {
+    "timestamp_iso": "string",
+    "site_name": "string",
+    "product_name": "string",
+    "sku": "string|null",
+    "product_url": "string",
+    "status": "string|null",
+    "price_value": "number|null",
+    "currency": "string|null",
+    "raw_price_text": "string|null",
+    "source_url": "string",
+    "notes": "string"
+  },
+  "webhook_recommended_method": "POST",
+  "webhook_content_type": "application/json",
+  "make_array_aggregator_note": "When receiving line-mode events, map the entire JSON body into an array aggregator to build a list; for batch-mode, parse the NDJSON file content."
+}
